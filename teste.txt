@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guerra de Siege - Summoners War</title>
+    <meta name="description" content="Entenda como funciona a Guerra de Siege no Summoners War. Regras, estratégias e mecânicas completas do modo de batalha em guilda." />
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --background: 220 25% 10%;
+            --foreground: 210 40% 98%;
+            --card: 220 20% 15%;
+            --card-foreground: 210 40% 98%;
+            --primary: 263 70% 60%;
+            --primary-foreground: 210 40% 98%;
+            --secondary: 217 30% 25%;
+            --secondary-foreground: 210 40% 98%;
+            --muted: 217 20% 20%;
+            --muted-foreground: 215 20% 65%;
+            --accent: 45 90% 55%;
+            --accent-foreground: 220 25% 10%;
+            --border: 217 20% 25%;
+            --radius: 0.75rem;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: hsl(var(--background));
+            color: hsl(var(--foreground));
+            line-height: 1.6;
+        }
+
+        .siege-section {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .background-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, hsl(263 70% 60% / 0.3), hsl(220 25% 10%));
+        }
+
+        .hero-container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            height: 50%;
+            overflow: hidden;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent, hsl(220 25% 10% / 0.5), hsl(220 25% 10%));
+            z-index: 10;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-content {
+            position: absolute;
+            inset: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-text {
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .hero-title {
+            font-size: 3.75rem;
+            font-weight: bold;
+            letter-spacing: -0.025em;
+            background: linear-gradient(135deg, hsl(45 90% 55%), hsl(38 95% 65%));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 25px 25px rgb(0 0 0 / 0.15));
+            margin-bottom: 1rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: hsl(var(--foreground) / 0.9);
+            max-width: 42rem;
+            margin: 0 auto;
+            filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04));
+        }
+
+        .rules-container {
+            position: relative;
+            flex: 1;
+            padding: 3rem 1rem;
+        }
+
+        .rules-content {
+            max-width: 80rem;
+            margin: 0 auto;
+        }
+
+        .rules-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .rules-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, hsl(263 70% 60%), hsl(240 80% 50%));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .rules-description {
+            color: hsl(var(--muted-foreground));
+            font-size: 1.125rem;
+            max-width: 42rem;
+            margin: 0 auto;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 1px solid hsl(var(--border));
+            background-color: hsl(var(--card) / 0.5);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0ms; }
+        .card:nth-child(2) { animation-delay: 150ms; }
+        .card:nth-child(3) { animation-delay: 300ms; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            box-shadow: 0 0 40px hsl(263 70% 60% / 0.3);
+            border-color: hsl(var(--primary) / 0.5);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, hsl(263 70% 60%), hsl(240 80% 50%));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .card:hover::before {
+            opacity: 0.1;
+        }
+
+        .card-content {
+            position: relative;
+            padding: 1.5rem;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .card-icon-wrapper {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 0 30px hsl(45 90% 55% / 0.2);
+            transition: transform 0.3s;
+        }
+
+        .card:hover .card-icon-wrapper {
+            transform: scale(1.1);
+        }
+
+        .card-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, hsl(45 90% 55%), hsl(38 95% 65%));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-description {
+            color: hsl(var(--foreground) / 0.9);
+            line-height: 1.625;
+            margin-bottom: 1rem;
+        }
+
+        .card-details {
+            list-style: none;
+        }
+
+        .card-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        .card-detail-bullet {
+            color: hsl(var(--primary));
+            margin-top: 0.25rem;
+        }
+
+        .bottom-gradient {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 8rem;
+            background: linear-gradient(to top, hsl(var(--background)), transparent);
+            pointer-events: none;
+        }
+
+        @media (min-width: 768px) {
+            .hero-title {
+                font-size: 4.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .rules-container {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .cards-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .rules-container {
+                padding: 3rem 4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="siege-section">
+        <!-- Background gradient overlay -->
+        <div class="background-gradient"></div>
+        
+        <!-- Hero Section -->
+        <div class="hero-container">
+            <!-- Hero Image with overlay -->
+            <div class="hero-image-wrapper">
+                <div class="hero-overlay"></div>
+                <img 
+                    src="src/assets/siege-war-hero.jpg" 
+                    alt="Siege War" 
+                    class="hero-image"
+                />
+                
+                <!-- Hero Content -->
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title">Guerra de Siege</h1>
+                        <p class="hero-subtitle">
+                            Domine o campo de batalha e conquiste a glória para sua guilda
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rules Section -->
+            <div class="rules-container">
+                <div class="rules-content">
+                    <div class="rules-header">
+                        <h2 class="rules-title">Como Funciona</h2>
+                        <p class="rules-description">
+                            Entenda as mecânicas principais da Guerra de Siege e prepare sua estratégia de conquista
+                        </p>
+                    </div>
+
+                    <div class="cards-grid">
+                        <!-- Card 1: Torres e Bases -->
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="card-icon-wrapper">
+                                        <img 
+                                            src="src/assets/tower-icon.jpg" 
+                                            alt="Torres e Bases"
+                                            class="card-icon"
+                                        />
+                                    </div>
+                                    <h3 class="card-title">Torres e Bases</h3>
+                                </div>
+                                
+                                <p class="card-description">
+                                    Cada guilda possui torres defensivas que devem ser protegidas enquanto ataca as bases inimigas.
+                                </p>
+                                
+                                <ul class="card-details">
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>10 bases para atacar e defender</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Cada base pode ter até 30 defesas</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Torres fornecem pontos de vitória</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Destrua todas as bases para vitória instantânea</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 2: Sistema de Batalha -->
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="card-icon-wrapper">
+                                        <img 
+                                            src="src/assets/battle-icon.jpg" 
+                                            alt="Sistema de Batalha"
+                                            class="card-icon"
+                                        />
+                                    </div>
+                                    <h3 class="card-title">Sistema de Batalha</h3>
+                                </div>
+                                
+                                <p class="card-description">
+                                    Batalhas estratégicas 4v4 onde cada monstro conta. Use seus melhores invocadores sabiamente!
+                                </p>
+                                
+                                <ul class="card-details">
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Formato 4 vs 4 por batalha</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Cada monstro pode ser usado apenas uma vez</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>3 tentativas por base inimiga</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Estratégia de ataque é fundamental</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Card 3: Participação da Guilda -->
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="card-header">
+                                    <div class="card-icon-wrapper">
+                                        <img 
+                                            src="src/assets/guild-icon.jpg" 
+                                            alt="Participação da Guilda"
+                                            class="card-icon"
+                                        />
+                                    </div>
+                                    <h3 class="card-title">Participação da Guilda</h3>
+                                </div>
+                                
+                                <p class="card-description">
+                                    Trabalhe em equipe com sua guilda para dominar o campo de batalha e conquistar a vitória.
+                                </p>
+                                
+                                <ul class="card-details">
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Mínimo de 10 membros para participar</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Coordenação entre membros é crucial</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Recompensas por contribuição individual</span>
+                                    </li>
+                                    <li class="card-detail-item">
+                                        <span class="card-detail-bullet">▸</span>
+                                        <span>Guerra dura 24 horas completas</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom decorative gradient -->
+        <div class="bottom-gradient"></div>
+    </section>
+</body>
+</html>

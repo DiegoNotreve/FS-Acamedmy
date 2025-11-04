@@ -1092,25 +1092,109 @@ dialog button {
   padding-left: 20px;
 }
 
-/* Media Query */
-@media (max-width: 768px) {
-  .lab-cards {
-    flex-direction: column;
-    align-items: center;
-  }
 
-  .lab-card {
-    width: 90%;
-  }
 
-  .lab-intro {
-    font-size: 1rem;
-  }
+
+
+
+/* menu mobile */
+
+.menu-mobile {
+    background-color: #000000ee;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 90000;
+    width: 0%;
+    overflow: hidden;
+    transition: .5s;
+    overflow-y: auto;
+}
+
+.menu-mobile.abrir-menu {
+    width: 70%;
+}
+
+.menu-mobile.abrir-menu ~ .overlay-menu {
+    display: block;
+}
+
+.menu-mobile  nav ul {
+    text-align: right;
+    list-style-type: none;
+}
+
+.menu-mobile nav ul a {
+  font-family: "Changa One", sans-serif;
+  font-weight: 400;
+    font-size: 30px;
+    text-decoration: none;
+    padding: 20px 10%;
+    display: block;
+    color: #00b8b8;
+    
+    
+}
+
+.menu-mobile nav ul a:hover {
+    background-color: #00b8b8;
+}
+
+
+.btn-abrir-menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: #00b8b8;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2rem;
+  color: #fff; /* ou a cor do seu tema */
+  z-index: 1000; /* pra ficar acima de tudo */
+  padding: 5px;
+  border-radius: 0 20px 20px 0;
+}
+
+.btn-abrir-menu i {
+  font-size: 2rem;
 }
 
 
 
+.btn-abrir-menu i {
+    font-size: 30px;
+    padding: 5px;
+    color: #fff;
+}
 
+.btn-abrir-menu{
+    display: none;
+}
+
+.btn-fechar {
+    padding: 20px 10px;
+}
+
+.btn-fechar i{
+ font-size: 40px;
+ color: #00b8b8;
+}
+
+.overlay-menu {
+  
+    background-color: #000000be;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 88888;
+    display: none;
+  }
 
 
 
@@ -1147,9 +1231,38 @@ dialog button {
     text-align: center;
     
   }
+
+  .labirinto .titulopadrao {
+    font-size: 1.7rem !important;
+  }
+
+  .btn-abrir-menu {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  background: #00b8b8;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  color: #fff; /* ou a cor do seu tema */
+  z-index: 1000; /* pra ficar acima de tudo */
+  padding: 5px;
+  border-radius: 0 20px 20px 0;
+}
+
+.btn-abrir-menu i {
+  font-size: 1.5rem;
+
+
+}
 }
 
 @media (max-width:480px) {
+
+
 
   .sobre, .gvg, .siege2, .siege1, .siege3, .regras {
     height: auto;
@@ -1177,6 +1290,10 @@ dialog button {
     font-size: 2rem;
     
 }
+
+  .siege1 .titulopadrao {
+    font-size: 1.7rem;
+  }
   .siege2 .titulopadrao {
     font-size: 1.5rem; 
   }
@@ -1186,6 +1303,25 @@ dialog button {
   .labirinto .titulopadrao {
     font-size: 2rem;
   }
+
+.btn-abrir-menu {
+  position: fixed;
+  top: 0px;
+  left: -10px;
+  background: #00b8b8;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #fff; /* ou a cor do seu tema */
+  z-index: 1000; /* pra ficar acima de tudo */
+  border-radius: 0 15px 15px 0;
+  height: 45px;
+}
+
+
+
 }
 
 
@@ -1199,6 +1335,12 @@ dialog button {
   .hero {
     display: none;
   }
+
+    .btn-abrir-menu{
+    display: block;
+    display: flex;
+    align-items: center;
+}
   
   h2.titulopadrao {
     font-size: 2.5rem;
@@ -1339,7 +1481,22 @@ dialog button {
     padding: 10px 15px;
   }
 
+   .lab-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .lab-card {
+    width: 90%;
+  }
+
+  .lab-intro {
+    font-size: 1rem;
+  }
+
 }
+
+
 
 
 

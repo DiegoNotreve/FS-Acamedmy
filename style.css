@@ -610,7 +610,7 @@ strong {
 .siege2 .intro {
   max-width: 700px;
   font-size: 1rem;
-  color: #ccc;
+  color: #fff;
   margin-bottom: 40px;
   z-index: 1;
 }
@@ -781,7 +781,7 @@ dialog button {
 
 .siege3 .intro {
   font-size: 1rem;
-  color: #ccc;
+  color: #fff;
   max-width: 700px;
   margin: 30px;
   line-height: 1.5;
@@ -967,12 +967,21 @@ dialog button {
   margin-bottom: 10px;
 }
 
+
+/* Labirinto */
+
+
 .labirinto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 60px 20px;
-  background: url('img/labirinto-bg.jpg') center/cover no-repeat;
+  background: url('img/labirinto.webp') center/cover no-repeat;
+  box-shadow: inset 0 0 0 2000px #00000099;
   color: #fff;
   text-align: center;
   font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
 }
 
 .labirinto h2 {
@@ -1004,6 +1013,17 @@ dialog button {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.lab-card li {
+  color: #ffd700;
+  margin-bottom: 10px;
+}
+
+.lab-card p {
+  margin-bottom: 15px;
+  color: #fff;
+  line-height: 1.5;
+}
+
 .lab-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 0 20px #00b8b8;
@@ -1024,6 +1044,11 @@ dialog button {
   margin-top: 10px;
   font-size: 0.9rem;
   color: #ccc;
+}
+
+.lab-note span {
+  color: #ff5555;
+  font-weight: bold;
 }
 
 .lab-observacao {
@@ -1079,6 +1104,46 @@ dialog button {
 
 
 /* === Responsividade === */
+
+@media (max-width:480px) {
+
+  .sobre, .gvg, .siege2, .siege1, .siege3, .regras {
+    height: auto;
+  }
+
+  h2.titulopadrao {
+    font-size: 2rem;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .sobre h2 {
+    font-size: 2rem;
+  }
+
+  .sobre .btn-neon {
+    font-size: 0.6rem;
+  }
+
+  .regras .titulopadrao {
+    font-size: 2rem;
+    margin-top: 15px;
+  }
+
+  .gvg .titulopadrao {
+    font-size: 2rem;
+    
+}
+  .siege2 .titulopadrao {
+    font-size: 2rem; 
+  }
+  .siege3 .titulopadrao {
+    font-size: 2rem;
+  }
+  .labirinto .titulopadrao {
+    font-size: 2rem;
+  }
+}
+
 
 
 @media (max-width: 768px) {
@@ -1234,7 +1299,50 @@ dialog button {
 
 
 
+@media (min-width: 769px) and (max-width: 1200px) {
+.regras, .siege1, .siege2, .siege3 {
+    height: auto;
+    min-height: 100vh; 
+  }
 
+  .gvg .titulopadrao, .siege1 .titulopadrao, .siege3 .titulopadrao, .labirinto .titulopadrao {
+    font-size: 2rem;
+    
+  }
+  .sobre .container-sobre {
+    max-width: 800px;
+  }
+
+  .sobre p {
+    font-size: 1rem;
+    text-align: justify;
+    line-height: 1.5;
+  }
+
+  .sobre img {
+    width: 30%;
+    height: auto;
+  }
+
+  .sobre .btn-neon {
+    font-size: 0.7rem;
+  }
+
+.container-flex {
+    padding: 20px 30px;
+  }
+  .cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rules-container {
+    padding: 2rem 2rem;
+  }
+
+
+
+  
+}
 
 
 

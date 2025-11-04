@@ -13,7 +13,7 @@
   --background: 220 25% 10%;
   --foreground: 210 40% 98%;
   --card: 220 20% 15%;
-  --card-foreground: 210 40% 98%;
+  --gforeground: 210 40% 98%;
   --primary: 263 70% 60%;
   --primary-foreground: 210 40% 98%;
   --secondary: 217 30% 25%;
@@ -57,7 +57,7 @@ body {
 }
 
 h2.titulopadrao {
-  font-size: 3.75rem;
+  font-size: 3rem;
   font-family: "Changa One", sans-serif;
   font-weight: 400;
   letter-spacing: -0.015em;
@@ -372,6 +372,26 @@ strong {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
 }
 
+.card-img-gvg {
+  background-color: #111;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.card-img-gvg img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
 /* SIEGE */
 
 .siege1 {
@@ -660,6 +680,8 @@ strong {
   object-fit: cover;
   display: block;
 }
+
+
 
 .card-img p {
   padding: 8px;
@@ -1105,6 +1127,28 @@ dialog button {
 
 /* === Responsividade === */
 
+@media (min-width: 390px) and (max-width: 470px) {
+  .hero {
+    height: 70dvh;
+  }
+
+  .sobre a.btn-neon {
+    font-size: 0.5rem;
+    font-weight: 600;
+  }
+
+  .gvg .prioridades_descricao h3 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .prioridades_imagem h3 {
+    font-size: 1rem !important;
+    text-align: center;
+    
+  }
+}
+
 @media (max-width:480px) {
 
   .sobre, .gvg, .siege2, .siege1, .siege3, .regras {
@@ -1134,7 +1178,7 @@ dialog button {
     
 }
   .siege2 .titulopadrao {
-    font-size: 2rem; 
+    font-size: 1.5rem; 
   }
   .siege3 .titulopadrao {
     font-size: 2rem;
@@ -1299,7 +1343,7 @@ dialog button {
 
 
 
-@media (min-width: 769px) and (max-width: 1200px) {
+@media (min-width: 769px) and (max-width: 1023px) {
 .regras, .siege1, .siege2, .siege3 {
     height: auto;
     min-height: 100vh; 

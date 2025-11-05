@@ -941,10 +941,9 @@ dialog button {
 /* === O contêiner principal que imita o grid === */
 .container-flex {
   display: flex;
-  flex-wrap: wrap; /* Permite quebrar linha */
-  justify-content: center; /* Centraliza horizontalmente */
-  align-items: center; /* Centraliza verticalmente */
-  gap: 20px; /* Espaço entre os blocos */
+  flex-wrap: wrap;
+  justify-content: center; 
+  gap: 20px; 
   width: 100%;
   height: 75vh;
   max-width: 1200px;
@@ -954,7 +953,7 @@ dialog button {
 .bloco {
   flex: 1 1 45%; /* Cada bloco ocupa ~45% da largura */
   min-width: 300px;
-  height: 45%; /* Controla a altura proporcional */
+  height: 45%; 
   background: #000000bb;
   border-left: 5px solid #00b8b8;
   border-radius: 12px;
@@ -1092,6 +1091,163 @@ dialog button {
   padding-left: 20px;
 }
 
+
+
+/* subjugação */
+
+.subjugacao {
+  background-image: url('img/fundoreigosma.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 2000px #00000099;
+  color: #f5f5f5;
+  padding: 30px 20px; /* mais espaço interno */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 100vh; /* cresce conforme o conteúdo */
+  height: auto;
+}
+
+.subjugacao .titulopadrao {
+  font-size: 2.5rem;
+  color: #00b8b8;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.conteudo-subjugacao {
+  background-color: #000000b7;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 20px;
+  border-radius: 16px;
+  width: 85%;
+  max-width: 1200px;
+  min-height: 75vh;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+  transition: all 0.3s ease;
+}
+
+/* --- Imagens --- */
+.imagens-subjugacao {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex: 1;
+  align-items: center;
+}
+
+.imagens-subjugacao img {
+  width: 380px;
+  border-radius: 14px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.subjugacao .veromos {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  max-width: 500px;
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.veromos {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.veromos img {
+  max-width: 400px;
+  width: auto;
+  height: 300px;
+  border-radius: 10px;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+.veromos img:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  cursor: default !important;
+}
+
+
+.imagens-subjugacao img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #00b8b8aa;
+}
+
+/* --- Texto e dicas --- */
+.dicas-subjugacao {
+  flex: 1;
+  max-width: 500px;
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.dicas-subjugacao h3 {
+  color: #ffcc66;
+  margin-bottom: 25px;
+  font-size: 1.5rem;
+}
+
+.dicas-subjugacao span {
+  color: #00b8b8;
+  font-weight: bold;
+}
+
+.dicas-subjugacao ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dicas-subjugacao li {
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .conteudo-subjugacao {
+    flex-direction: column;
+    align-items: center;
+    width: 95%;
+    padding: 30px 20px;
+    gap: 30px;
+    min-height: auto;
+  }
+
+  .imagens-subjugacao img {
+    width: 90%;
+    max-width: 350px;
+  }
+
+  .dicas-subjugacao {
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  .subjugacao .titulopadrao {
+    font-size: 2rem;
+  }
+}
 
 
 
@@ -1255,9 +1411,8 @@ dialog button {
 
 .btn-abrir-menu i {
   font-size: 1.5rem;
-
-
 }
+
 }
 
 @media (max-width:480px) {
@@ -1320,7 +1475,9 @@ dialog button {
   height: 45px;
 }
 
-
+.subjugacao .titulopadrao {
+    font-size: 1.5rem;
+  }
 
 }
 
@@ -1500,8 +1657,8 @@ dialog button {
 
 
 
-@media (min-width: 769px) and (max-width: 1023px) {
-.regras, .siege1, .siege2, .siege3 {
+@media (min-width: 769px) and (max-width: 1024px) {
+.regras, .siege1, .siege2, .siege3, .labirinto {
     height: auto;
     min-height: 100vh; 
   }
@@ -1510,46 +1667,18 @@ dialog button {
     font-size: 2rem;
     
   }
-  .sobre .container-sobre {
-    max-width: 800px;
-  }
+   
+ 
 
-  .sobre p {
-    font-size: 1rem;
-    text-align: justify;
-    line-height: 1.5;
-  }
-
-  .sobre img {
-    width: 30%;
-    height: auto;
-  }
-
-  .sobre .btn-neon {
-    font-size: 0.7rem;
-  }
-
-.container-flex {
-    padding: 20px 30px;
-  }
-  .cards-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .rules-container {
-    padding: 2rem 2rem;
-  }
-
-
-
+.hero-buttons {
+  margin-top: 100px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
   
 }
 
 
-
-
-
-@media (min-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -1558,6 +1687,39 @@ dialog button {
     padding: 3rem 4rem;
   }
 
- 
+  .container-flex {
+
+    padding: 20px 30px;
+  }
+.bloco {
+  width: auto;
+    height: 50%; 
+  }
+
+.container-sobre {
+    max-width: 1000px;
+    padding: 40px;
+
+  }
+  .sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  .sobre p {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  .sobre img {
+    width: 25%;
+  }
+
+
+  
 }
+
+
+
+
 

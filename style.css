@@ -1661,7 +1661,7 @@ dialog button {
 @media (min-width: 769px) and (max-width: 1024px) {
 
   
-.regras, .siege1, .siege2, .siege3, .labirinto {
+.sobre, .regras, .siege1, .siege2, .siege3, .labirinto {
     height: auto;
     min-height: 100vh; 
   }
@@ -1694,6 +1694,8 @@ dialog button {
 
     padding: 20px 30px;
   }
+
+  
 .bloco {
   width: auto;
     height: 50%; 
@@ -1724,5 +1726,112 @@ dialog button {
 
 
 
+/* --- Monitores de 14" (1366x768) --- */
+@media (min-width: 1025px) and (max-width: 1366px) {
+
+  .sobre, .regras, .siege1, .siege2, .siege3, .labirinto {
+    height: auto;
+    min-height: 100vh; 
+  }
+
+ .hero-buttons {
+    margin-top: 80px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    
+  }
+  
+ 
+
+  .bloco {
+    height: 48%; 
+  }
+
+  .sobre {
+    padding: 80px 60px;
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .sobre h2 {
+    font-size: 2.4rem;
+  }
+
+  .sobre p {
+    font-size: 1rem;
+  }
+
+  .sobre img {
+    width: 25%;
+  }
+
+  .container-sobre {
+    max-width: 1000px;
+  }
+}
+
+/* --- Monitores de 15–17" (1600x900) --- */
+@media (min-width: 1367px) and (max-width: 1600px) {
+  
+  .sobre, .regras, .siege1, .siege2, .siege3, .labirinto {
+    height: auto;
+    min-height: 100vh; 
+  }
+  
+  .container-sobre {
+    max-width: 1000px;
+    padding: 40px;
+
+  }
+  .sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  .sobre p {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  .sobre img {
+    width: 25%;
+  }
+}
+
+/* --- Monitores Full HD (18" e acima até 1920x1080) --- */
+@media (min-width: 1601px) and (max-width: 1920px) {
+
+  .sobre, .regras, .siege1, .siege2, .siege3, .labirinto {
+    height: auto;
+    min-height: 100vh; 
+  }
+  .sobre {
+    padding: 120px 100px;
+  }
+
+  .container-sobre {
+    max-width: 1200px;
+  }
+
+.container-sobre {
+    max-width: 1000px;
+    padding: 40px;
+
+  }
+  .sobre h2 {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+  .sobre p {
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: justify;
+  }
+
+  .sobre img {
+    width: 25%;
+  }
+}
 
 

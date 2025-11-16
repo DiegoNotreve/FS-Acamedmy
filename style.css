@@ -1693,16 +1693,15 @@ box-shadow: 0px 10px 15px -3px #0000001a;
 
   /* Descrições */
   .info-descricoes {
-    width: 100%;
-    text-align: justify;
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
   }
 
   .info-descricoes p {
     width: 100%;
     font-size: 13px;
-    text-align: justify;
-     
-    
+    text-align: center;
     
   }
 
@@ -1848,16 +1847,17 @@ box-shadow: 0px 10px 15px -3px #0000001a;
   }
 
   /* Descrições */
-  .info-descricoes {
+   .info-descricoes {
     max-width: 100%;
-    
+    text-align: center;
+    align-items: center;
   }
 
   .info-descricoes p {
     width: 100%;
     font-size: 13px;
-    line-height: 1.4;
-    text-align: start;
+    text-align: justify;
+    
   }
 
 }

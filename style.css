@@ -24,6 +24,7 @@
   --accent-foreground: 220 25% 10%;
   --border: 217 20% 25%;
   --radius: 0.75rem;
+  --ciano: #00b8b8;
 }
 
 @font-face {
@@ -31,6 +32,7 @@
   src: url("segoe-ui-4-cufonfonts/Segoe\ UI\ Bold.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
+  
 }
 
 @keyframes voar {
@@ -48,13 +50,11 @@ html {
 
 body {
  height: 100vh;
+ background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  
-}
+
 
 h2.titulopadrao {
   font-size: 3rem;
@@ -62,7 +62,7 @@ h2.titulopadrao {
   font-weight: 400;
   letter-spacing: -0.015em;
   background-color: #031020;
-  color: #00b8b8;
+  color: var(--ciano);
   margin-bottom: 1rem;
   padding: 0.4rem 1.2rem;
   border-radius: 1rem;
@@ -74,7 +74,7 @@ h2.titulopadrao {
   background-image: url(img/fundo1.png);
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100dvh;
+  height: 100vh;
   padding: 20px;
   width: 100%;
 }
@@ -100,7 +100,7 @@ h2.titulopadrao {
 }
 
 .btn-azul:hover {
-  background-color: #00b8b8;
+  background-color: var(--ciano);
 }
 
 /* SOBRE */
@@ -148,14 +148,7 @@ h2.titulopadrao {
   animation-delay: 1s; /* leve atraso para parecer mais natural */
 }
 
-@keyframes voar {
-  0% {
-    top: 0;
-  }
-  100% {
-    top: 20px;
-  }
-}
+
 
 .sobre h2 {
   font-family: "Changa One", sans-serif;
@@ -318,7 +311,7 @@ strong {
 
 .prioridades_descricao h3 {
   background-color: #031020;
-  color: #00b8b8;
+  color: var(--ciano);
   width: fit-content;
   padding: 10px 15px;
   border-radius: 10px;
@@ -869,7 +862,7 @@ dialog button {
 .listas_reserva h2 {
   font-size: 1.6rem;
   margin-bottom: 25px;
-  color: #00b8b8;
+  color: var(--ciano);
   font-family: "Changa One", sans-serif;
   font-weight: 400;
   text-align: center;
@@ -903,7 +896,7 @@ dialog button {
 
 .listas_reserva .lista ul li {
   margin-bottom: 10px;
-  color: #00b8b8;
+  color: var(--ciano);
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.4;
@@ -933,7 +926,7 @@ dialog button {
 
 .regras h2 {
   font-size: 2.2rem;
-  color: #00b8b8;
+  color: var(--ciano);
   text-shadow: 0 0 10px #000;
   margin-bottom: 10px;
 }
@@ -969,7 +962,7 @@ dialog button {
 }
 
 .bloco h3 {
-  color: #00b8b8;
+  color: var(--ciano);
   font-size: 1.3rem;
   margin-bottom: 10px;
 }
@@ -1053,7 +1046,7 @@ dialog button {
 .lab-card h3 {
   font-size: 1.4rem;
   margin-bottom: 15px;
-  color: #00b8b8;
+  color: var(--ciano);
 }
 
 .lab-card ul {
@@ -1114,7 +1107,7 @@ dialog button {
 
 .subjugacao .titulopadrao {
   font-size: 2.5rem;
-  color: #00b8b8;
+  color: var(--ciano);
   margin-bottom: 50px;
   text-transform: uppercase;
   letter-spacing: 3px;
@@ -1188,7 +1181,7 @@ dialog button {
 }
 
 
-.imagens-subjugacao img:hover {
+.imagens-subjugacao r {
   transform: scale(1.08);
   box-shadow: 0 0 20px #00b8b8aa;
 }
@@ -1209,7 +1202,7 @@ dialog button {
 }
 
 .dicas-subjugacao span {
-  color: #00b8b8;
+  color: var(--ciano);
   font-weight: bold;
 }
 
@@ -1223,7 +1216,7 @@ dialog button {
   line-height: 1.6;
 }
 
-/* --- Responsivo --- */
+
 @media (max-width: 768px) {
   .conteudo-subjugacao {
     flex-direction: column;
@@ -1288,13 +1281,13 @@ dialog button {
     text-decoration: none;
     padding: 20px 10%;
     display: block;
-    color: #00b8b8;
+    color: var(--ciano);
     
     
 }
 
 .menu-mobile nav ul a:hover {
-    background-color: #00b8b8;
+    background-color: var(--ciano);
 }
 
 
@@ -1337,7 +1330,7 @@ dialog button {
 
 .btn-fechar i{
  font-size: 40px;
- color: #00b8b8;
+ color: var(--ciano);
 }
 
 .overlay-menu {
@@ -1538,7 +1531,9 @@ box-shadow: 0px 10px 15px -3px #0000001a;
   border-radius: 6px;
   padding: 6px 10px;
   color: #fff;
-  font-size: 14px;
+  font-size: 14px; 
+  
+  width: 100%;
 }
 
 /* Responsivo (para telas menores) */
@@ -1578,7 +1573,7 @@ box-shadow: 0px 10px 15px -3px #0000001a;
 
 @media (min-width: 390px) and (max-width: 479px) {
   .hero {
-    height: 70dvh;
+    height: 70vh;
   }
 
   .sobre a.btn-neon {
@@ -1627,6 +1622,10 @@ box-shadow: 0px 10px 15px -3px #0000001a;
     height: auto;
   }
 
+  .timegigante h2.titulopadrao {
+    font-size: 1.5rem;
+  }
+
   #container {
     width: 100%;
     padding: 12px;
@@ -1650,8 +1649,8 @@ box-shadow: 0px 10px 15px -3px #0000001a;
 
   /* Conteúdo geral */
   .content.show {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: column !important;
+    align-items: center !important;
     gap: 16px;
     padding: 15px;
   }
@@ -1668,14 +1667,16 @@ box-shadow: 0px 10px 15px -3px #0000001a;
   }
 
   .content1 p {
+   
     font-size: 14px;
-    line-height: 1.4;
+    
     padding: 8px;
   }
 
   /* Container de informações da direita */
   .infos {
     width: 100%;
+  
     padding: 0;
   }
 
@@ -1692,13 +1693,17 @@ box-shadow: 0px 10px 15px -3px #0000001a;
 
   /* Descrições */
   .info-descricoes {
-    max-width: 100%;
-    text-align: center;
+    width: 100%;
+    text-align: justify;
   }
 
   .info-descricoes p {
+    width: 100%;
     font-size: 13px;
-    line-height: 1.4;
+    text-align: justify;
+     
+    
+    
   }
 
 }
@@ -1772,6 +1777,9 @@ box-shadow: 0px 10px 15px -3px #0000001a;
     height: auto;
   }
 
+   .timegigante h2.titulopadrao {
+    font-size: 1.5rem;
+  }
   #container {
     width: 100%;
     padding: 12px;
@@ -1814,7 +1822,7 @@ box-shadow: 0px 10px 15px -3px #0000001a;
 
   .content1 p {
     font-size: 14px;
-    line-height: 1.4;
+    width: 100%;
     padding: 8px;
   }
 
@@ -1842,12 +1850,14 @@ box-shadow: 0px 10px 15px -3px #0000001a;
   /* Descrições */
   .info-descricoes {
     max-width: 100%;
-    text-align: center;
+    
   }
 
   .info-descricoes p {
+    width: 100%;
     font-size: 13px;
     line-height: 1.4;
+    text-align: start;
   }
 
 }
@@ -2067,7 +2077,7 @@ box-shadow: 0px 10px 15px -3px #0000001a;
 
   .content1 p {
     font-size: 1rem;
-    line-height: 1.5;
+    width: 100%;
     padding: 12px;
   }
 
@@ -2205,7 +2215,7 @@ box-shadow: 0px 10px 15px -3px #0000001a;
   }
 
   .content1 p {
-    width: 90%;
+    width: 100%;
     font-size: 0.9rem;
   }
 
@@ -2231,6 +2241,7 @@ box-shadow: 0px 10px 15px -3px #0000001a;
   .info-descricoes p {
     font-size: 0.9rem;
     padding: 8px 10px;
+    text-align: left;
   }
   
 }
